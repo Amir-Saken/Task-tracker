@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"><head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content ="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" >
+</head>
+<body>
+<!--<div th:each="el:${list1}" class="d-flex">-->
+<!--  <h3 class="ml-5 mb-5 mt-5">id</h3>-->
+<!--  <h3 class="ml-5 mb-5 mt-5">project_name</h3>-->
+<!--  <h3 class="ml-5 mb-5 mt-5">start_date</h3>-->
+<!--  <h3 class="ml-5 mb-5 mt-5">status_project</h3>-->
+<!--  <h3 class="ml-5 mb-5 mt-5">completion_date</h3>-->
+<!--  <h3 class="ml-5 mb-5 mt-5">priority_project</h3>-->
+<!--</div>-->
+<div th:each="el:${list1}" class="d-flex">
+  <h3 th:text = "${el.id}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.project_name}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.start_date}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.status_project}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.completion_date}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.priority_project}" class="ml-5 mb-5 mt-5"></h3>
+  <a th:href="'/project/' + ${el.id}" class="mb-5 mt-5 ml-5 ">Детальнее</a>
+</div>
+
+<h2 class="ml-5">-----------------------------------------------------------</h2>
+<!--<div th:each="el:${list}" >-->
+<!--  <h3 class="ml-5 mb-5 mt-5">id</h3>-->
+<!--  <h3 class="ml-5 mb-5 mt-5">task_name</h3>-->
+<!--  <h3 class="ml-5 mb-5 mt-5">status</h3>-->
+<!--  <h3 class="ml-5 mb-5 mt-5">description</h3>-->
+<!--  <h3 class="mb-5 ml-5 mt-5">priority</h3>-->
+<!--  <a th:href="'/index/' + ${el.id}" class="mb-5 ml-5 mt-5">Детальнее</a>-->
+<!--</div>-->
+<div th:each="el:${list}" class="d-flex">
+  <h3 th:text = "${el.id}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.task_name}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.status}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.description}" class="ml-5 mb-5 mt-5"></h3>
+  <h3 th:text = "${el.priority}" class="mb-5 ml-5 mt-5"></h3>
+  <a th:href="'/index/' + ${el.id}" class="mb-5 ml-5 mt-5">Детальнее</a>
+</div>
+</body>
+</html>

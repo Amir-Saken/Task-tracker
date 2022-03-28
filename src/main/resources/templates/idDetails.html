@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"><head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content ="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<div th:each="el:${list}">
+    <h3 th:text = "${el.id}"></h3>
+    <h3 th:text = "${el.task_name}"></h3>
+    <h3 th:text = "${el.description}"></h3>
+    <h3 th:text = "${el.priority}"></h3>
+    <div class="d-flex ml-5">
+  <a th:href="'/index/'+${el.id} + '/edit'" class="btn btn-warning">Edit</a>
+    <form th:action="'/index/'+${el.id} + '/delete'" method="post">
+        <button class="btn btn-warning" type="submit">Delete</button>
+    </form>
+    </div>
+</div>
+</body>
+</html>

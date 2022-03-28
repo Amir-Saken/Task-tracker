@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"><head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content ="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<h1>
+    Task Trackers
+</h1>
+
+    <div>
+        <h3>Create a Task</h3>
+        <form action="/index" method="post" class="container mt-5 mb-5 ">
+        <input type="text" name="task_name" placeholder="Task Name"/>
+        <input type="text" name="status" placeholder="Status"/>
+        <input type="text" name="description" placeholder="Description"/>
+        <input type="number" name="priority" placeholder="Priority"/>
+        <button type="submit" >Submit</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/"><head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content ="text/html; charset=UTF-8"/>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+<h1>
+  Task Trackers
+</h1>
+
+<div>
+  <div th:each="el : ${list}">
+    <h3>Edit a Project</h3>
+      <form method="post" class="container mt-5 mb-5 ">
+        <input type="text" th:value="${el.project_name}" name="project_name" placeholder="Project Name"/>
+        <input type="text" th:value="${el.start_date}" name="start_date" placeholder="Project start"/>
+        <input type="text" th:value="${el.completion_date}" name="completion_date" placeholder="Project completion date"/>
+        <input type="text" th:value="${el.status_project}"  name="status_project" placeholder="Status"/>
+        <input type="number" th:value="${el.priority_project}" name="priority_project" placeholder="Priority"/>
+        <button type="submit" >Edit</button>
+      </form>
+  </div>
+</div>
+</body>
+</html>
