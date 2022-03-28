@@ -24,6 +24,9 @@ public class BlogController {
     public String index(Model model) {
         return "index";
     }
+    
+    // Getting data and adding it to the site
+    
     @GetMapping("/output")
     public String output(Model model) {
         Iterable<Post> list = postRepository.findAll();
@@ -32,6 +35,9 @@ public class BlogController {
         model.addAttribute("list1", list1);
         return "output";
     }
+    
+    // Adding data to the database (tasks)
+    
     @PostMapping("/index")
     public String postIndex(@RequestParam String task_name, @RequestParam String status, @RequestParam String description, @RequestParam int priority, Model model) {
         Post post = new Post(task_name, status, description, priority);
@@ -39,12 +45,18 @@ public class BlogController {
 
         return "/index";
     }
+    
+    
+    
     @GetMapping("/project")
     public String project(Model model) {
         Iterable<Project> proje = projectRepository.findAll();
         model.addAttribute("proje", proje);
         return "project";
     }
+    
+        // Adding data to the database (projects)
+
     @PostMapping("/project")
     public String postProject(@RequestParam String project_name, @RequestParam String status_project, @RequestParam String start_date, @RequestParam String completion_date,@RequestParam int priority_project) {
 
@@ -63,7 +75,9 @@ public class BlogController {
         return "idDetails";
     }
 
-
+        
+    // Changing data
+    
     @GetMapping("/index/{id}/edit")
     public String edit(@PathVariable(value = "id") long id, Model model) {
         if (!postRepository.existsById(id)) {
@@ -75,6 +89,9 @@ public class BlogController {
         model.addAttribute("list", rest);
         return "edit";
     }
+    
+    // Data modification and saving to the database (tasks)
+    
     @PostMapping("/index/{id}/edit")
     public String postUpdate(@PathVariable(value = "id") long id, @RequestParam String task_name, @RequestParam String status, @RequestParam String description, @RequestParam int priority, Model model) throws Exception {
         Post post = postRepository.findById(id).orElseThrow(Exception::new);
@@ -85,7 +102,9 @@ public class BlogController {
         postRepository.save(post);
         return "redirect:/output";
     }
-    /////////////////////
+    
+    
+        
     @GetMapping("/project/{id}")
     public String projectId(@PathVariable(value = "id") long id, Model model) {
         Optional<Project> list = projectRepository.findById(id);
@@ -95,7 +114,8 @@ public class BlogController {
         return "idDetailsProject";
     }
 
-
+    // Data modification (projects)
+    
     @GetMapping("/project/{id}/editProject")
     public String editProject(@PathVariable(value = "id") long id, Model model) {
         if (!projectRepository.existsById(id)) {
@@ -107,6 +127,9 @@ public class BlogController {
         model.addAttribute("list", rest);
         return "editProject";
     }
+    
+     // Data modification and saving to the database (projects)
+    
     @PostMapping("/project/{id}/editProject")
     public String projectUpdate(@PathVariable(value = "id") long id, @RequestParam String project_name, @RequestParam String status_project, @RequestParam String start_date, @RequestParam String completion_date, @RequestParam int priority_project, Model model) throws Exception {
 
@@ -119,7 +142,9 @@ public class BlogController {
         projectRepository.save(project);
         return "redirect:/output";
     }
-
+    
+    // Deleting data
+    
     @PostMapping("/index/{id}/delete")
     public String deleteIndex(@PathVariable(value = "id") long id, Model model) throws Exception {
         Post post = postRepository.findById(id).orElseThrow(Exception::new);
